@@ -236,9 +236,9 @@ collection:
     meta:
       id: req_404_error_test
       created: 1725897680000
-      modified: 1725897680000
+      modified: 1757426268000
       isPrivate: false
-      description: "測試不存在的任務 ID，應該返回 404 錯誤"
+      description: "測試不存在的任務 ID，返回標準化 404 錯誤回應，不揭露系統資訊"
       sortKey: -1725897680000
     method: GET
     headers:

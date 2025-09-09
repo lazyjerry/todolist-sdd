@@ -1,0 +1,92 @@
+{
+  "summary": {
+    "total_tests": 11,
+    "passed_tests": 11,
+    "failed_tests": 0,
+    "pass_rate": 100.0,
+    "total_execution_time": 0.25562596321105957,
+    "start_time": 1757431583.889902,
+    "end_time": 1757431584.145528
+  },
+  "test_results": [
+    {
+      "test_name": "test_api_connectivity",
+      "status": "PASS",
+      "message": "API 服務正常運行",
+      "execution_time": 0.09291601181030273,
+      "timestamp": "2025-09-09T23:26:23.982821"
+    },
+    {
+      "test_name": "test_can_get_all_todos",
+      "status": "PASS",
+      "message": "成功獲取任務列表，包含 32 個任務",
+      "execution_time": 0.049093008041381836,
+      "timestamp": "2025-09-09T23:26:24.061206"
+    },
+    {
+      "test_name": "test_can_create_todo",
+      "status": "PASS",
+      "message": "成功建立任務 ID: 39",
+      "execution_time": 0.008898019790649414,
+      "timestamp": "2025-09-09T23:26:24.070160"
+    },
+    {
+      "test_name": "test_can_get_single_todo",
+      "status": "PASS",
+      "message": "成功獲取任務 ID: 39",
+      "execution_time": 0.008048057556152344,
+      "timestamp": "2025-09-09T23:26:24.078259"
+    },
+    {
+      "test_name": "test_can_update_todo",
+      "status": "PASS",
+      "message": "成功更新任務 ID: 39",
+      "execution_time": 0.009988069534301758,
+      "timestamp": "2025-09-09T23:26:24.088297"
+    },
+    {
+      "test_name": "test_can_delete_todo",
+      "status": "PASS",
+      "message": "成功刪除任務 ID: 39",
+      "execution_time": 0.008627891540527344,
+      "timestamp": "2025-09-09T23:26:24.105034"
+    },
+    {
+      "test_name": "test_title_is_required",
+      "status": "PASS",
+      "message": "正確驗證標題必填規則",
+      "execution_time": 0.007585048675537109,
+      "timestamp": "2025-09-09T23:26:24.112688"
+    },
+    {
+      "test_name": "test_description_is_required",
+      "status": "PASS",
+      "message": "正確驗證描述必填規則",
+      "execution_time": 0.0075490474700927734,
+      "timestamp": "2025-09-09T23:26:24.120285"
+    },
+    {
+      "test_name": "test_returns_404_for_nonexistent_todo",
+      "status": "PASS",
+      "message": "正確返回 404 狀態碼",
+      "execution_time": 0.008842945098876953,
+      "timestamp": "2025-09-09T23:26:24.129177"
+    },
+    {
+      "test_name": "test_returns_404_when_deleting_nonexistent_todo",
+      "status": "PASS",
+      "message": "正確返回 404 狀態碼",
+      "execution_time": 0.008176088333129883,
+      "timestamp": "2025-09-09T23:26:24.137392"
+    },
+    {
+      "test_name": "test_returns_404_when_updating_nonexistent_todo",
+      "status": "PASS",
+      "message": "正確返回 404 狀態碼",
+      "execution_time": 0.008050203323364258,
+      "timestamp": "2025-09-09T23:26:24.145486"
+    }
+  ],
+  "api_base_url": "http://localhost/api/todos",
+  "timestamp": "2025-09-09T23:26:24.145546"
+}

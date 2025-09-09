@@ -1,0 +1,87 @@
+{
+  "execution_date": "2025-09-09 23:03:32",
+  "total_tests": 11,
+  "passed_tests": 11,
+  "failed_tests": 0,
+  "success_rate": "100.0%",
+  "total_time": "0.54s",
+  "test_results": [
+    {
+      "test_name": "應用程式健康檢查",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "",
+      "response_time": "0.270s"
+    },
+    {
+      "test_name": "獲取所有任務列表",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "返回 29 個任務",
+      "response_time": "0.087s"
+    },
+    {
+      "test_name": "建立新任務",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "任務 ID: 31",
+      "response_time": "0.055s"
+    },
+    {
+      "test_name": "獲取單一任務 (ID: 31)",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "標題: Python 測試任務",
+      "response_time": "0.043s"
+    },
+    {
+      "test_name": "更新任務 (ID: 31)",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "任務更新成功",
+      "response_time": "0.021s"
+    },
+    {
+      "test_name": "刪除任務 (ID: 31)",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "任務刪除成功",
+      "response_time": "0.011s"
+    },
+    {
+      "test_name": "驗證標題必填",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "正確返回驗證錯誤",
+      "response_time": "0.012s"
+    },
+    {
+      "test_name": "驗證描述必填",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "正確返回驗證錯誤",
+      "response_time": "0.009s"
+    },
+    {
+      "test_name": "404 錯誤處理 - 獲取不存在任務",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "錯誤訊息: 找不到請求的資源",
+      "response_time": "0.012s"
+    },
+    {
+      "test_name": "404 錯誤處理 - 刪除不存在任務",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "正確返回 404 錯誤",
+      "response_time": "0.008s"
+    },
+    {
+      "test_name": "404 錯誤處理 - 更新不存在任務",
+      "status": "✅ PASS",
+      "success": true,
+      "message": "正確返回 404 錯誤",
+      "response_time": "0.009s"
+    }
+  ]
+}

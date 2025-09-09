@@ -1,0 +1,33 @@
+
+   WARN  Metadata found in doc-comment for class Tests\Unit\TodoModelTest. Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+   WARN  Metadata found in doc-comment for class Tests\Feature\TodoApiTest. Metadata in doc-comments is deprecated and will no longer be supported in PHPUnit 12. Update your test code to use attributes instead.
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                                                    0.01s  
+
+   PASS  Tests\Unit\TodoModelTest
+  ✓ can create todo                                                      0.24s  
+  ✓ completed defaults to false                                          0.01s  
+  ✓ attribute casting                                                    0.01s  
+  ✓ fillable attributes                                                  0.01s  
+  ✓ timestamps are managed                                               1.02s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful response                        0.07s  
+
+   PASS  Tests\Feature\TodoApiTest
+  ✓ can get all todos                                                    0.03s  
+  ✓ can create todo                                                      0.02s  
+  ✓ can get single todo                                                  0.01s  
+  ✓ can update todo                                                      0.01s  
+  ✓ can delete todo                                                      0.01s  
+  ✓ title is required                                                    0.01s  
+  ✓ description is required                                              0.01s  
+  ✓ returns404 for nonexistent todo                                      0.01s  
+  ✓ returns404 when deleting nonexistent todo                            0.01s  
+  ✓ returns404 when updating nonexistent todo                            0.01s  
+
+  Tests:    17 passed (70 assertions)
+  Duration: 1.56s
+

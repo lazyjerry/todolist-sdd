@@ -153,6 +153,15 @@ cd laravel-todo-api
 
 ```json
 {
+	"message": "找不到請求的資源",
+	"error": "resource_not_found"
+}
+```
+
+#### 資源不存在 (404)
+
+```json
+{
 	"message": "No query results for model [App\\Models\\Todo] 999"
 }
 ```
