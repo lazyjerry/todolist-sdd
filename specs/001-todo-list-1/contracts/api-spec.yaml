@@ -1,0 +1,392 @@
+openapi: 3.0.3
+info:
+  title: TODO List API
+  description: Laravel 12 實現的 TODO List 後端 API，提供基本的任務管理功能
+  version: 1.0.0
+  contact:
+    name: TODO List API Support
+
+servers:
+  - url: http://localhost/api
+    description: 本地開發環境 (Laravel Sail)
+
+paths:
+  /todos:
+    get:
+      summary: 獲取所有任務
+      description: 返回所有任務的列表，包含完整的任務資訊
+      tags:
+        - 任務管理
+      responses:
+        "200":
+          description: 成功獲取任務列表
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Todo"
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        description: 任務總數
+                        example: 10
+              example:
+                data:
+                  - id: 1
+                    title: "完成專案文件"
+                    description: "撰寫技術規格文件和使用者手冊"
+                    completed: false
+                    created_at: "2025-09-09T10:00:00.000000Z"
+                    updated_at: "2025-09-09T10:00:00.000000Z"
+                meta:
+                  total: 1
+        "500":
+          description: 伺服器內部錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      summary: 創建新任務
+      description: 創建一個新的任務項目
+      tags:
+        - 任務管理
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - description
+              properties:
+                title:
+                  type: string
+                  maxLength: 255
+                  description: 任務標題
+                  example: "完成專案文件"
+                description:
+                  type: string
+                  maxLength: 1000
+                  description: 任務詳細描述
+                  example: "撰寫技術規格文件和使用者手冊"
+                completed:
+                  type: boolean
+                  description: 完成狀態（可選，預設為 false）
+                  example: false
+      responses:
+        "201":
+          description: 任務創建成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "任務創建成功"
+                  data:
+                    $ref: "#/components/schemas/Todo"
+        "422":
+          description: 驗證失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "500":
+          description: 伺服器內部錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /todos/{id}:
+    get:
+      summary: 獲取特定任務
+      description: 根據任務 ID 獲取特定任務的詳細資訊
+      tags:
+        - 任務管理
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 任務 ID
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: 成功獲取任務詳情
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Todo"
+        "404":
+          description: 任務不存在
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+        "500":
+          description: 伺服器內部錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      summary: 完整更新任務
+      description: 更新任務的所有欄位（需要提供完整的任務資料）
+      tags:
+        - 任務管理
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 任務 ID
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - description
+              properties:
+                title:
+                  type: string
+                  maxLength: 255
+                  description: 任務標題
+                  example: "更新後的任務標題"
+                description:
+                  type: string
+                  maxLength: 1000
+                  description: 任務詳細描述
+                  example: "更新後的任務描述"
+                completed:
+                  type: boolean
+                  description: 完成狀態
+                  example: true
+      responses:
+        "200":
+          description: 任務更新成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "任務更新成功"
+                  data:
+                    $ref: "#/components/schemas/Todo"
+        "404":
+          description: 任務不存在
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+        "422":
+          description: 驗證失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "500":
+          description: 伺服器內部錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    patch:
+      summary: 部分更新任務
+      description: 更新任務的部分欄位（只需要提供要更新的欄位）
+      tags:
+        - 任務管理
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 任務 ID
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  maxLength: 255
+                  description: 任務標題（可選）
+                  example: "部分更新的標題"
+                description:
+                  type: string
+                  maxLength: 1000
+                  description: 任務詳細描述（可選）
+                  example: "部分更新的描述"
+                completed:
+                  type: boolean
+                  description: 完成狀態（可選）
+                  example: true
+      responses:
+        "200":
+          description: 任務更新成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "任務更新成功"
+                  data:
+                    $ref: "#/components/schemas/Todo"
+        "404":
+          description: 任務不存在
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+        "422":
+          description: 驗證失敗
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "500":
+          description: 伺服器內部錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: 刪除任務
+      description: 根據任務 ID 刪除特定任務
+      tags:
+        - 任務管理
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 任務 ID
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: 任務刪除成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "任務刪除成功"
+        "404":
+          description: 任務不存在
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+        "500":
+          description: 伺服器內部錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 任務唯一識別碼
+          example: 1
+        title:
+          type: string
+          description: 任務標題
+          example: "完成專案文件"
+        description:
+          type: string
+          description: 任務詳細描述
+          example: "撰寫技術規格文件和使用者手冊"
+        completed:
+          type: boolean
+          description: 任務完成狀態
+          example: false
+        created_at:
+          type: string
+          format: date-time
+          description: 任務建立時間
+          example: "2025-09-09T10:00:00.000000Z"
+        updated_at:
+          type: string
+          format: date-time
+          description: 任務最後更新時間
+          example: "2025-09-09T10:00:00.000000Z"
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 錯誤訊息
+          example: "發生伺服器錯誤"
+        error:
+          type: string
+          description: 錯誤類型
+          example: "Internal Server Error"
+
+    NotFoundError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 錯誤訊息
+          example: "找不到指定的任務"
+        error:
+          type: string
+          description: 錯誤類型
+          example: "Resource not found"
+
+    ValidationError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 驗證錯誤總訊息
+          example: "驗證失敗"
+        errors:
+          type: object
+          description: 具體的欄位驗證錯誤
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          example:
+            title: ["標題欄位為必填"]
+            description: ["描述欄位為必填"]

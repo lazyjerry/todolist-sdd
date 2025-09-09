@@ -1,0 +1,326 @@
+type: collection.insomnia.rest/5.0
+name: Laravel TODO List API
+meta:
+  id: wrk_todo_api_laravel_collection
+  created: 1725897600000
+  modified: 1757426268000
+  description: "Laravel TODO List RESTful API 集合 - 完整的任務管理 CRUD 操作與錯誤處理測試"
+collection:
+  - url: "{{ _.base_url }}/api/todos"
+    name: "獲取所有任務"
+    meta:
+      id: req_get_all_todos
+      created: 1725897600000
+      modified: 1725897600000
+      isPrivate: false
+      description: "獲取所有 TODO 任務列表，支援分頁和篩選"
+      sortKey: -1725897600000
+    method: GET
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos"
+    name: "建立新任務"
+    meta:
+      id: req_create_todo
+      created: 1725897610000
+      modified: 1725897610000
+      isPrivate: false
+      description: "建立新的 TODO 任務"
+      sortKey: -1725897610000
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "title": "完成專案文件",
+          "description": "撰寫完整的 API 文檔和使用說明"
+        }
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos/{{ _.todo_id }}"
+    name: "獲取單一任務"
+    meta:
+      id: req_get_single_todo
+      created: 1725897620000
+      modified: 1725897620000
+      isPrivate: false
+      description: "根據 ID 獲取特定的 TODO 任務"
+      sortKey: -1725897620000
+    method: GET
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos/{{ _.todo_id }}"
+    name: "更新任務"
+    meta:
+      id: req_update_todo
+      created: 1725897630000
+      modified: 1725897630000
+      isPrivate: false
+      description: "更新指定 ID 的 TODO 任務"
+      sortKey: -1725897630000
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "title": "完成專案文件 (已更新)",
+          "description": "撰寫完整的 API 文檔和使用說明，包含範例",
+          "completed": true
+        }
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos/{{ _.todo_id }}"
+    name: "更新任務 (PATCH)"
+    meta:
+      id: req_patch_todo
+      created: 1725897640000
+      modified: 1725897640000
+      isPrivate: false
+      description: "部分更新指定 ID 的 TODO 任務"
+      sortKey: -1725897640000
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "completed": true
+        }
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos/{{ _.todo_id }}"
+    name: "刪除任務"
+    meta:
+      id: req_delete_todo
+      created: 1725897650000
+      modified: 1725897650000
+      isPrivate: false
+      description: "刪除指定 ID 的 TODO 任務"
+      sortKey: -1725897650000
+    method: DELETE
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos"
+    name: "驗證錯誤 - 缺少標題"
+    meta:
+      id: req_validation_error_title
+      created: 1725897660000
+      modified: 1725897660000
+      isPrivate: false
+      description: "測試驗證錯誤：缺少必填標題欄位"
+      sortKey: -1725897660000
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "description": "只有描述沒有標題，應該會產生驗證錯誤"
+        }
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos"
+    name: "驗證錯誤 - 缺少描述"
+    meta:
+      id: req_validation_error_description
+      created: 1725897670000
+      modified: 1725897670000
+      isPrivate: false
+      description: "測試驗證錯誤：缺少必填描述欄位"
+      sortKey: -1725897670000
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "title": "只有標題沒有描述，應該會產生驗證錯誤"
+        }
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/todos/999"
+    name: "404 錯誤測試"
+    meta:
+      id: req_404_error_test
+      created: 1725897680000
+      modified: 1725897680000
+      isPrivate: false
+      description: "測試不存在的任務 ID，應該返回 404 錯誤"
+      sortKey: -1725897680000
+    method: GET
+    headers:
+      - name: Accept
+        value: application/json
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+  - url: "{{ _.base_url }}/api/health"
+    name: "健康檢查"
+    meta:
+      id: req_health_check
+      created: 1725897690000
+      modified: 1757426268000
+      isPrivate: false
+      description: "檢查 Laravel 應用程式健康狀態和 API 服務可用性"
+      sortKey: -1725897690000
+    method: GET
+    headers:
+      - name: Accept
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_laravel_todo_api
+    created: 1725897600000
+    modified: 1725897600000
+
+environments:
+  name: Base Environment
+  meta:
+    id: env_laravel_todo_api_base
+    created: 1725897600000
+    modified: 1757426268000
+    isPrivate: false
+  subEnvironments:
+    - name: development
+      meta:
+        id: env_laravel_todo_api_dev
+        created: 1725897600000
+        modified: 1757426268000
+        isPrivate: false
+        sortKey: 1725897600000
+      data:
+        base_url: http://localhost
+        todo_id: "1"
+
+    - name: staging
+      meta:
+        id: env_laravel_todo_api_staging
+        created: 1757426268000
+        modified: 1757426268000
+        isPrivate: false
+        sortKey: 1725897605000
+      data:
+        base_url: https://staging-api.your-domain.com
+        todo_id: "1"
+
+    - name: production
+      meta:
+        id: env_laravel_todo_api_prod
+        created: 1725897610000
+        modified: 1757426268000
+        isPrivate: true
+        sortKey: 1725897610000
+      data:
+        base_url: https://api.your-domain.com
+        todo_id: "1"

@@ -1,0 +1,248 @@
+# =======================
+# TODO List 專案 gitignore
+# =======================
+
+# =======================
+# macOS 系統檔案
+# =======================
+
+# macOS 系統產生的檔案
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# macOS Finder 相關
+.fseventsd
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# =======================
+# 編輯器和 IDE
+# =======================
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains IDEs (PhpStorm, WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =======================
+# Node.js / JavaScript
+# =======================
+
+# 依賴
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# NPM / Yarn
+.npm
+.yarn-integrity
+yarn.lock
+package-lock.json
+
+# 環境變數
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# =======================
+# Laravel 專案相關
+# =======================
+
+# Laravel 環境變數
+laravel-todo-api/.env
+laravel-todo-api/.env.backup
+laravel-todo-api/.env.example.backup
+
+# Laravel 快取
+laravel-todo-api/bootstrap/cache/*.php
+laravel-todo-api/storage/framework/cache/*
+laravel-todo-api/storage/framework/sessions/*
+laravel-todo-api/storage/framework/views/*
+laravel-todo-api/storage/logs/*
+
+# Laravel 上傳檔案
+laravel-todo-api/public/storage
+laravel-todo-api/storage/app/public/*
+
+# Laravel 依賴
+laravel-todo-api/vendor/
+
+# Laravel Telescope
+laravel-todo-api/storage/telescope/
+
+# =======================
+# Docker
+# =======================
+
+# Docker 檔案
+.docker/
+docker-compose.override.yml
+.dockerignore
+
+# =======================
+# 版本控制
+# =======================
+
+# Git
+.git/
+*.orig
+*.rej
+
+# =======================
+# 暫存和備份檔案
+# =======================
+
+# 備份檔案
+*.bak
+*.backup
+*.tmp
+*.temp
+*~
+
+# 壓縮檔案
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# =======================
+# 系統相關
+# =======================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# =======================
+# 開發工具
+# =======================
+
+# 測試覆蓋率報告
+coverage/
+*.lcov
+.nyc_output/
+
+# ESLint 快取
+.eslintcache
+
+# Prettier 快取
+.prettiercache
+
+# 記錄檔
+*.log
+logs/
+
+# =======================
+# 專案特定
+# =======================
+
+# 記憶檔案 (排除敏感資訊)
+memory/sensitive/
+memory/private/
+
+# 暫存檔案
+temp/
+tmp/
+cache/
+
+# 本地設定檔
+.local
+local.*
+
+# API 金鑰和憑證
+*.key
+*.pem
+*.crt
+*.p12
+secrets.json
+
+# 資料庫檔案
+*.sqlite
+*.db
+
+# =======================
+# 文檔相關
+# =======================
+
+# 產生的文檔
+docs/generated/
+build/
+dist/
+
+# PDF 檔案 (排除可能的二進制檔案)
+*.pdf
+
+# =======================
+# 開發環境
+# =======================
+
+# 本地環境配置
+.devcontainer/
+.vagrant/
+Vagrantfile.local
+
+# 環境變數檔案
+.env.*
+!.env.example
+
+# =======================
+# 其他
+# =======================
+
+# 系統快取
+.cache/
+.tmp/
+
+# 錯誤報告
+error_log
+error.log
+
+# 除錯檔案
+debug.log
+debug_backtrace.log
